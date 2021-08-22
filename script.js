@@ -22,7 +22,7 @@ var confirmNumChar;
 var confirmUpper;
 var confirmLower;
 
-// // Write password to the #password input
+// Write password to the #password input
 function writePassword() {
     var password = generatePassword();
     var passwordText = document.querySelector("#password");
@@ -42,24 +42,24 @@ if(length < 8 || length > 128) {
     alert("You must choose between 8-128 characters. Please Re-Enter")
     return  generatePassword()
 }
-
+//this fixes issue of users inputing "strings of letters" into the length prompt
 if(isNaN(length)) {
     alert("Please enter number's only.");
     return generatePassword();
 };
 
 //This is where you assign the required parameters of your password
-var confirmSpecialChar = confirm("Click OK to confirm if you would like to include the special characters parameter or cancel if you don't");
-var confirmNumChar = confirm("Click OK to confirm if you would like to include numeric characters parameter or cancel if you dont't");    
-var confirmLower = confirm("Click OK to confirm if you would like to include lowercase characters paremeter or cancel if you don't");
-var confirmUpper = confirm("Click OK to confirm if you would like to include uppercase characters parameter or cancel if you don't");
+var confirmSpecialChar = confirm("Select OK to confirm if you would like to include the special characters parameter or cancel if you don't");
+var confirmNumChar = confirm("Select OK to confirm if you would like to include numeric characters parameter or cancel if you dont't");    
+var confirmLower = confirm("Select OK to confirm if you would like to include lowercase characters paremeter or cancel if you don't");
+var confirmUpper = confirm("Select OK to confirm if you would like to include uppercase characters parameter or cancel if you don't");
 
- if(confirmUpper === false && confirmLower === false && confirmSpecialChar === false && confirmNumChar === false) {
+ if(!confirmUpper && !confirmLower && !confirmSpecialChar && !confirmNumChar) {
     alert("You must choose at least one parameter");
-    var confirmSpecialChar = confirm("Click OK to confirm if you would like to include the special characters parameter or cancel if you dont't");
-    var confirmNumChar = confirm("Click OK to confirm if you would like to include numeric characters parameter or cancel if you dont't");    
-    var confirmLower = confirm("Click OK to confirm if you would like to include lowercase characters parameter or cancel if you dont't");
-    var confirmUpper = confirm("Click OK to confirm if you would like to include uppercase characters parameter or cancel if you dont't");   
+    var confirmSpecialChar = confirm("Select OK to confirm if you would like to include the special characters parameter or cancel if you dont't");
+    var confirmNumChar = confirm("Select OK to confirm if you would like to include numeric characters parameter or cancel if you dont't");    
+    var confirmLower = confirm("Select OK to confirm if you would like to include lowercase characters parameter or cancel if you dont't");
+    var confirmUpper = confirm("Select OK to confirm if you would like to include uppercase characters parameter or cancel if you dont't");   
 };
 
 var passwordCharacters = [];
@@ -79,7 +79,7 @@ if (confirmLower) {
 if (confirmUpper) {
   passwordCharacters = passwordCharacters.concat(letterUpper)
 };
-
+//moved var result from line 38 to assist in creation of for loop
 var result = ""; 
 
 for (var i=0; i < length; i++) {
